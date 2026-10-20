@@ -24,6 +24,13 @@ class Book {
     this.font = font;
     this.genre = genre;
   }
+
+  // ini adalah method
+  getInfo(): void {
+    console.log(
+      `Title: ${this.title}, Authors: ${this.authors.join(", ")}, Pages: ${this.pages}, Paper Size: ${this.paperSize}, Font: ${this.font}, Genre: ${this.genre}`,
+    );
+  }
 }
 
 // new Book adalah object dari class Book
@@ -36,4 +43,5 @@ const novelBook = new Book(
   "Fiction",
 );
 
-console.log(novelBook);
+// memanggil method getInfo() dari object novelBook
+novelBook.getInfo();
