@@ -8,6 +8,7 @@ class Book {
   paperSize: string;
   font: string;
   genre: string;
+  stock: number;
 
   constructor(
     title: string,
@@ -16,6 +17,7 @@ class Book {
     paperSize: string,
     font: string,
     genre: string,
+    stock: number,
   ) {
     this.title = title;
     this.authors = authors;
@@ -23,6 +25,7 @@ class Book {
     this.paperSize = paperSize;
     this.font = font;
     this.genre = genre;
+    this.stock = stock;
   }
 
   // ini adalah method
@@ -30,6 +33,22 @@ class Book {
     console.log(
       `Title: ${this.title}, Authors: ${this.authors.join(", ")}, Pages: ${this.pages}, Paper Size: ${this.paperSize}, Font: ${this.font}, Genre: ${this.genre}`,
     );
+  }
+
+  borrow(): string {
+    if (this.stock === 0) {
+      return "Sorry, this book is currently out of stock.";
+    }
+    this.stock--;
+    return `You have borrowed "${this.title}". Remaining stock: ${this.stock}`;
+  }
+
+  return(): string {
+    if (this.stock >= 5) {
+      return "Sorry, you cannot return this book as the stock is already full.";
+    }
+    this.stock++;
+    return `You have returned "${this.title}". Current stock: ${this.stock}`;
   }
 }
 
@@ -41,6 +60,7 @@ const novelBook = new Book(
   "A4",
   "Times New Roman",
   "Fiction",
+  5,
 );
 
 // memanggil method getInfo() dari object novelBook
