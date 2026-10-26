@@ -1,61 +1,57 @@
-class NPC {
-  public name: string;
-  public health: number;
-  public attack: number;
-  public defense: number;
-  public speed: number;
-  public npctype: "walk" | "fly";
+class Npc {
+  health: number;
+  speed: number;
+  defense: number;
+  attack: number;
+  npctype: "walk" | "fly";
 
   constructor(
-    name: string,
     health: number,
-    attack: number,
-    defense: number,
     speed: number,
+    defense: number,
+    attack: number,
     npctype: "walk" | "fly",
   ) {
-    this.name = name;
     this.health = health;
-    this.attack = attack;
-    this.defense = defense;
     this.speed = speed;
+    this.defense = defense;
+    this.attack = attack;
     this.npctype = npctype;
   }
 
-  walking(): void {
-    this.speed += 2;
-    console.log(`${this.name} is walking. Speed increased to ${this.speed}.`);
+  walking(): number {
+    this.speed = +2;
+    return this.speed;
   }
 
-  attacking(): void {
-    this.attack += 2;
-    console.log(
-      `${this.name} is attacking. Attack increased to ${this.attack}.`,
-    );
+  attacking(): number {
+    this.attack = +2;
+    return this.attack;
   }
 
-  sprinting(): void {
-    this.speed += 5;
-    console.log(`${this.name} is sprinting. Speed increased to ${this.speed}.`);
+  sprint(): number {
+    this.speed = +4;
+    return this.speed;
   }
 
-  ultimateskill(): void {
-    this.attack += 10;
-    console.log(
-      `${this.name} is using ultimate skill. Attack increased to ${this.attack}.`,
-    );
+  ultimateskill(): number {
+    this.attack = +10;
+    return this.attack;
   }
-  isflying(): void {
+
+  isFlying(): string {
     if (this.npctype === "fly") {
-      this.speed += 10;
-      console.log(`${this.name} is flying. Speed Increased to ${this.speed}.`);
-    } else {
-      console.log(`${this.name} cannot fly.`);
+      this.speed = +5;
+      this.attack = +5;
+      return `NPC itu terbang`;
     }
+    return `Bukan NPC terbang`;
   }
 }
-const mage: NPC = new NPC("Mage", 100, 20, 10, 5, "walk");
-mage.walking();
 
-const harpy: NPC = new NPC("Harpy", 20, 50, 33, 79, "fly");
-harpy.isflying();
+const harpy = new Npc(100, 10, 15, 20, "walk");
+const goblin = new Npc(150, 15, 20, 25, "fly");
+
+console.log(harpy.attacking());
+console.log(harpy.sprint());
+console.log(goblin.isFlying());
