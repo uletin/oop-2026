@@ -55,8 +55,6 @@ class Mage extends Hero {
 }
 
 class Support extends Hero {
-  healing: number;
-
   constructor(
     health: number,
     attack: number,
@@ -65,7 +63,10 @@ class Support extends Hero {
     basicAttack: number,
   ) {
     super(health, attack, magicalDefense, pysicalDefense, basicAttack);
-    this.healing = 10;
+  }
+
+  healing() {
+    return (this.health += 10);
   }
 }
 
