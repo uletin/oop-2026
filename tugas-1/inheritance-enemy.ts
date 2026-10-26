@@ -1,19 +1,42 @@
 // Ini Tugas
 
-class Enemy {}
+class Enemy {
+  health: number;
 
-class Minions {}
+  constructor(health: number) {
+    this.health = health;
+  }
 
-class MinionFighter {}
+  baseHealth(): number {
+    return this.health;
+  }
+}
 
-class MinionArcher {}
+class Minions extends Enemy {
+  constructor(health: number) {
+    super(health);
+  }
 
-class MinonMage {}
+  baseHealth(): number {
+    return (this.health += 30);
+  }
+}
 
-class Lord {}
+class MinionFighter extends Enemy {}
 
-class Turtle {}
+class MinionArcher extends Enemy {}
 
-class RedDragon {}
+class MinionMage extends Enemy {}
 
-class BlueWolf {}
+class SuperMinion extends Enemy {}
+
+class Lord extends Enemy {}
+
+class Turtle extends Enemy {}
+
+class RedDragon extends Enemy {}
+
+class BlueWolf extends Enemy {}
+
+const minion = new Minions(10);
+console.log(minion.baseHealth());
