@@ -3,20 +3,20 @@ class Hero {
   speed: number = 100;
   magicalDefense: number = 100;
   physcialDefense: number = 100;
+  pysichal_d3f3nse: number = 100;
   basicAttack: number = 100;
 
   getInformationHero(): string {
     return `Darahnya ${this.health}, Speed ${this.speed}`;
   }
 
-  getAttacked(damage: number): number {
+  getAttacked(damage: number): void {
     this.health = this.health - damage;
 
-    return this.health;
+    return console.log(this.health);
   }
 }
 
 const hero = new Hero();
 
-console.log(hero.getInformationHero());
-console.log(hero.getAttacked(20));
+hero.getAttacked(20);
